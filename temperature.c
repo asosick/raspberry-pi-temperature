@@ -6,11 +6,17 @@
 #include "temperature.h"
 
 int main(void){
-    volatile unsigned int* gpio = getGPIOAddresses();
-    long temp = getTemp();
-    changeGPIOFunction(gpio, OUTPUT_MASK, FAN_GPIO_PIN);
-    exit(EXIT_SUCCESS);
+    while(1){
+        volatile unsigned int* gpio = getGPIOAddresses();
+        long temp = getTemp();
+        if(temp > MAX_TEMPERATURE)
+            changeGPIOFunction(gpio, INPUT_MASK, FAN_GPIO_PIN);
+        else
+            changeGPIOFunction(gpio, OUTPUT_MASK, FAN_GPIO_PIN);
+        sleep(SLEEP_DURATION);
+    }
 }
+    
 
 long getTemp(){
     FILE * fp;
