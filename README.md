@@ -1,9 +1,3 @@
-## Overview
-A very simple c program to turn on and off the GPIO fan after exceeding 75 degrees celcius.
+This needs to be fixed.
 
-The default GPIO pin for the fan is 14.
-
-Changing the pin from input to output mode and vice-versa is enough to toggle the fan.
-
-Based off the documentation here for the BCM2711 chip: 
-https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf 
+Set pin to output then change from high to low. Current implementation is using the pullup resistor to power the pi which is not okay
